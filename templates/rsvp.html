@@ -1,0 +1,126 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	
+			
+			
+		<!-- BEGIN PAGE HEADER -->
+		<div class="page-header section-divider-bottom-1 section-divider-bg-color" >
+			
+			<div class="container">
+				<div class="row">
+					<div class="col center">
+						<h1 class="page-title">RSVP</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE HEADER -->
+		
+			
+		<!-- BEGIN PAGE CONTENT -->
+		<div class="page-content no-padding">
+				
+			<!-- BEGIN MAIN CONTENT -->
+			<main class="main">
+				
+				<!-- BEGIN CONTACT FORM SECTION -->
+				<section class="section-bg-color overflow-content-over">
+					<div class="side-flowers"></div>
+					
+					<div class="container">
+						<div class="row gx-6">
+							<div class="col-xl-6 col-lg-5 overflow-image-wrapper center">
+								<h2 class="title">No Pressure, But We’ll Cry If You Don’t Come</h2>
+								<p>The big day is almost here, and we need to know, will you be joining the celebration? Whether you’re ready to hit the dance floor, toast to love, or just here for the cake (no judgment!), let us know! Your RSVP helps us plan the best day ever, with enough food, seats, and love to go around. Can’t wait to celebrate with you!</p>
+							
+								<blockquote class="neela-quote small extra-margin">
+									Please, confirm your attendance<br>on or before 25th of March
+								</blockquote>
+								
+								
+								
+								
+							</div>
+							
+							<!-- BEGIN RSVP FORM -->
+							<div class="col-xl-6 col-lg-7">
+								<div class="form-wrapper no-shadow overflow neela-style">
+									<h2 class="section-title">Will you Attend?</h2>
+
+									<form id="form-rsvp" method="post" action="{% url 'submit_rsvp' %}">
+										{% csrf_token %}
+										
+										<div class="form-floating">
+											<input type="text" name="name" id="name" placeholder="Your Name*" class="form-control" required>
+											<label for="name">Your Name*</label>
+										</div>
+									
+										<div class="form-floating">
+											<input type="email" name="email" id="email" placeholder="E-mail*" class="form-control">
+											<label for="email">E-mail*</label>
+										</div>
+									
+										<div class="form-check-wrapper">
+											<div class="form-check form-check-inline">
+												<input class="form-check-input required" type="radio" name="attendance" value="yes" id="attend_wedding_yes" onclick="toggleGuestField()">
+												<label for="attend_wedding_yes">Yes, I will attend.</label>
+											</div>
+										
+											<div class="form-check form-check-inline">
+												<input class="form-check-input required" type="radio" name="attendance" value="no" id="attend_wedding_no" onclick="toggleGuestField()">
+												<label for="attend_wedding_no">Sorry, I can't come.</label>
+											</div>
+										</div>
+										
+										<div class="form-floating" id="guest_field">
+											<input type="number" name="guest_count" id="guest_count" placeholder="Number of Guests*" class="form-control" min="0">
+											<label for="guest_count">Number of Guests</label>
+										</div>
+										
+										<div class="form-floating">
+											<textarea id="message" name="message" placeholder="Message" class="form-control" rows="4"></textarea>
+											<label for="message">Message</label>
+										</div>
+									
+										<div class="center">
+											<button type="submit" class="btn btn-primary">Send</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- END CONTACT FORM -->
+				
+						</div>
+					</div>
+				</section>
+				<!-- END CONTACT FORM SECTION -->
+				<script>
+					document.addEventListener("DOMContentLoaded", function() {
+						function toggleGuestField() {
+							var guestField = document.getElementById("guest_field");
+							var guestInput = document.getElementById("guest_count");
+							var attendNo = document.getElementById("attend_wedding_no");
+					
+							if (attendNo.checked) {
+								guestField.style.display = "none";
+								guestInput.value = "";  // Clear input when hidden
+								guestInput.removeAttribute("required"); // Remove required attribute
+							} else {
+								guestField.style.display = "block";
+								guestInput.setAttribute("required", "required"); // Only required if attending
+							}
+						}
+					
+						document.getElementById("attend_wedding_yes").addEventListener("change", toggleGuestField);
+						document.getElementById("attend_wedding_no").addEventListener("change", toggleGuestField);
+						
+						toggleGuestField();  // Run once on page load
+					});
+					</script>
+					
+					
+							
+{% endblock %}

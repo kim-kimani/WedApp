@@ -1,0 +1,83 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	
+			
+				
+		<!-- BEGIN PAGE HEADER -->
+		<div class="page-header section-divider-bottom-1">
+			<div class="container">
+				<div class="row">
+					<div class="col center">
+						<h1 class="page-title">Leave Your Message</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE HEADER -->
+		
+			
+		<!-- BEGIN PAGE CONTENT -->
+
+        <!-- BEGIN CONTACT FORM SECTION -->
+				<section class="section-bg-color overflow-content-over">
+					<div class="side-flowers"></div>
+					
+					<div class="container">
+						<div class="row gx-6">
+							<div class="col-xl-6 col-lg-5 overflow-image-wrapper center">
+								<h2 class="title">Leave a Note, Share a Memory!</h2>
+								<p>Before we say ‘I do,’ drop a piece of advice, a memory, or a joke to make us smile!</p>							
+								
+								
+								
+								
+								
+							</div>
+							
+							<!-- BEGIN RSVP FORM -->
+							<div class="col-xl-6 col-lg-7">
+								<div class="form-wrapper no-shadow overflow neela-style">
+									<h2 class="section-title">Leave a Message</h2>
+
+									<form id="form-rsvp" method="post" action="{% url 'add_messages' %}" novalidate>
+										{% csrf_token %}
+										
+										<div class="form-floating">
+											<input type="text" name="name" id="name" placeholder="Your Name*" class="form-control required">
+											<label for="name">Your Name*</label>
+										</div>
+
+                                        <div class="form-floating">
+                                            <select name="recipient" id="recipient" class="form-control required">
+                                                <option value="" selected disabled>Choose message recipient</option>
+                                                <option value="bride">{{wedding.bride}}</option>
+                                                <option value="groom">{{wedding.groom}}</option>
+                                                <option value="both">Both</option>
+                                            </select>
+                                            <label for="recipient">Send To</label>
+                                        </div>
+                                    
+									
+										<div class="form-floating">
+											<textarea id="text" name="text" placeholder="Message" class="form-control" rows="4"></textarea>
+											<label for="message">Message</label>
+										</div>
+									
+										<div class="center">
+											<button type="submit" class="btn btn-primary">Send</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- END CONTACT FORM -->
+				
+						</div>
+					</div>
+				</section>
+				<!-- END CONTACT FORM SECTION -->
+                
+
+        {% endblock%}

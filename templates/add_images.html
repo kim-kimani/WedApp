@@ -1,0 +1,70 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	
+			
+				
+		<!-- BEGIN PAGE HEADER -->
+		<div class="page-header section-divider-bottom-1">
+			<div class="container">
+				<div class="row">
+					<div class="col center">
+						<h1 class="page-title">Post Your Wedding Photos!</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE HEADER -->
+		
+			
+		<!-- BEGIN PAGE CONTENT -->
+
+        <!-- BEGIN CONTACT FORM SECTION -->
+				<section class="section-bg-color overflow-content-over">
+					<div class="side-flowers"></div>
+					
+					<div class="container">
+						<div class="row gx-6">
+							<div class="col-xl-6 col-lg-5 overflow-image-wrapper center">
+								<h2 class="title">Captured Memories, Shared With Love!</h2>
+								<p>
+                                    Captured a perfect moment? A funny dance move? <br>
+                                    We’d love to see our wedding through your eyes! Share your best shots and help us build a beautiful album of memories.
+                                </p>							
+							</div>
+							
+							<!-- BEGIN RSVP FORM -->
+							<div class="col-xl-6 col-lg-7">
+								<div class="form-wrapper no-shadow overflow neela-style">
+									<h2 class="section-title">Frame the Love, Share the Joy</h2>
+
+									<form id="form-rsvp" method="post" action="{% url 'add_images' %}" enctype="multipart/form-data">
+										{% csrf_token %}
+										
+										<div class="form-floating">
+											<input type="text" name="name" id="name" placeholder="Your Name*" class="form-control required">
+											<label for="name">Your Name*</label>
+										</div>
+
+                                        <div class="form-floating">
+                                            <input type="file" name="images" id="images" accept="image/*" multiple class="form-control required">
+                                            
+                                        </div>                                        
+									
+										<div class="center">
+											<button type="submit" class="btn btn-primary">Upload</button>
+										</div>
+									</form>
+								</div>
+							</div>
+
+							<!-- END CONTACT FORM -->
+				
+						</div>
+					</div>
+				</section>
+				<!-- END CONTACT FORM SECTION -->
+                
+
+        {% endblock%}

@@ -1,0 +1,106 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+
+<!-- BEGIN PAGE HEADER -->
+<div class="page-header section-divider-bottom-1">
+    <div class="container">
+        <div class="row">
+            <div class="col center">
+                <h1 class="page-title">Wedding Gallery</h1>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- END PAGE HEADER -->
+
+    
+<!-- BEGIN PAGE CONTENT -->
+<div class="page-content">
+        
+    <!-- BEGIN MAIN CONTENT -->
+    <main class="main">
+        
+        <!-- BEGIN GALLERY -->
+        <div class="gallery">
+            <div class="container">
+                <div class="row">
+                    <p class="center">
+                        <a class="btn btn-primary" href="{% url 'add_images' %}">Add Your Photos</a>
+                    </p>
+        
+                    {% for image in page_obj %}
+                        <div class="col-sm-6 col-md-3">
+                            <div class="item">
+                                <img src="{{ image.image.url }}" alt="Uploaded Image" class="img-fluid rounded shadow" />
+                            </div>
+                        </div>
+        
+                        {% if forloop.counter|divisibleby:4 %}
+                            <div class="w-100"></div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        
+        
+            <!-- BEGIN PAGINATION -->
+            {% if page_obj.paginator.num_pages > 1 %}
+            <div class="pagination">
+                {% comment %} <ul id="previous">
+                    {% if page_obj.has_previous %}
+                        <li><a href="?page={{ page_obj.previous_page_number }}"><i class="fas fa-chevron-left"></i></a></li>
+                    {% endif %}
+                </ul> {% endcomment %}
+
+                <ul id="pages">
+                    <!-- Always show the first page if we're not on it -->
+                    {% if page_obj.number > 3 %}
+                        <li><a href="?page=1">1</a></li>
+                        <li><span>...</span></li>
+                    {% endif %}
+
+                    <!-- Show pages around the current page -->
+                    {% for num in page_obj.paginator.page_range %}
+                        {% if num == page_obj.number or num == page_obj.number|add:-1 or num == page_obj.number|add:1 %}
+                            <li>
+                                <a href="?page={{ num }}" class="{% if num == page_obj.number %}active{% endif %}">{{ num }}</a>
+                            </li>
+                        {% endif %}
+                    {% endfor %}
+
+                    <!-- Always show the last page if we're not on it -->
+                    {% if page_obj.number < page_obj.paginator.num_pages|add:-2 %}
+                        <li><span>...</span></li>
+                        <li><a href="?page={{ page_obj.paginator.num_pages }}">{{ page_obj.paginator.num_pages }}</a></li>
+                    {% endif %}
+                </ul>
+
+                {% comment %} <ul id="next">
+                    {% if page_obj.has_next %}
+                        <li><a href="?page={{ page_obj.next_page_number }}"><i class="fas fa-chevron-right"></i></a></li>
+                    {% endif %}
+                </ul> {% endcomment %}
+            </div>
+            {% endif %}
+            <!-- END PAGINATION -->
+            <p class="center">
+                <a class="btn btn-primary" href="{% url 'add_images' %}">Add Your Photos</a>
+            </p>
+
+            
+        </div>
+        <!-- END GALLERY -->
+        
+    </main>
+    <!-- END MAIN CONTENT -->
+    
+</div>
+<!-- END PAGE CONTENT -->
+
+
+
+
+{% endblock%}

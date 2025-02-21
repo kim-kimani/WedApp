@@ -1,0 +1,105 @@
+
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+	
+			
+				
+		<!-- BEGIN PAGE HEADER -->
+		<div class="page-header section-divider-bottom-1">
+			<div class="container">
+				<div class="row">
+					<div class="col center">
+						<h1 class="page-title">Messages</h1>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END PAGE HEADER -->
+		
+			
+		<!-- BEGIN PAGE CONTENT -->
+		<div class="page-content">
+				
+			<!-- BEGIN MAIN CONTENT -->
+			<main class="main">
+				
+				<!-- BEGIN ABOUT US SECTION -->
+				<section class="no-padding-top">
+					<div class="container">
+						<div class="row">
+							<div class="col-xl-8 offset-xl-2">
+								<p class="center"><a class="btn btn-primary" href="{% url 'add_messages' %}">Leave Us a Message</a></p>
+								<h2 class="title-fancy color">Love Notes & Laughs from You!</h2>
+								<p class="center">You spoke, and we’re all ears (and maybe a few happy tears)! Here’s a collection of heartfelt advice, cherished memories, and hilarious wisdom from our favorite people, you! Whether it’s a golden tip for a happy marriage, a sweet wish, or a joke that’ll keep us giggling through the honeymoon, we’re loving every word.  Keep them coming, we promise to read them all (even the embarrassing ones)! <br> 💌😂</p>
+								
+                                {% for message in message %}
+                                    {% if forloop.counter|divisibleby:2 %}
+                                    <div class="element-v2 photo-left">
+                                        <div class="image">
+											{% comment %} {% if message.recipient == "bride" %}
+												<img src="{{ media.bride.url }}" alt="Bride Picture">
+											{% elif message.recipient == "groom" %}
+												<img src="{{ media.groom.url }}" alt="Groom Picture">
+											{% else %}
+												<img src="{{ media.bride_n_groom.url }}" alt="Bride and Groom Picture">
+											{% endif %} {% endcomment %}
+										</div>
+                                        <div class="info neela-style">
+                                            <div class="content">
+                                                <h3>{{ message.name }} <br>
+												<small>{{ message.created_at|date:"F d, Y" }}</small></h3>
+                                                <p>{{ message.text }}</p>
+                                                <ul class="sn-icons">
+												{% if message.recipient == "bride" %}
+													<b>Sent to {{wedding.bride}}</b>
+												{% elif message.recipient == "groom" %}
+													<b>Sent to {{wedding.groom}}</b>
+												{% else %}
+													<b>Sent to {{wedding.bride}} and {{wedding.groom}}</b>
+												{% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    {% else %}
+                                    <div class="element-v2 photo-right">
+                                        <div class="info neela-style">
+                                            <div class="content">
+                                                <h3>{{ message.name }} <br>
+												<small>{{ message.created_at|date:"F d, Y" }}</small></h3>
+                                                <p>{{ message.text }}</p>
+                                                <ul class="sn-icons">
+													{% if message.recipient == "bride" %}
+														<b>Sent to {{wedding.bride}}</b>
+													{% elif message.recipient == "groom" %}
+														<b>Sent to {{wedding.groom}}</b>
+													{% else %}
+														<b>Sent to {{wedding.bride}} and {{wedding.groom}}</b>
+													{% endif %}
+												</ul>
+												</ul>
+                                            </div>
+                                        </div>
+                                        <div class="image">
+											{% comment %} {% if message.recipient == "bride" %}
+												<img src="{{ media.bride.url }}" alt="Bride Picture">
+											{% elif message.recipient == "groom" %}
+												<img src="{{ media.groom.url }}" alt="Groom Picture">
+											{% else %}
+												<img src="{{ media.bride_n_groom.url }}" alt="Bride and Groom Picture">
+											{% endif %} {% endcomment %}
+										</div>
+                                    </div>
+                                    {% endif %}
+                                {% endfor %}
+							</div>
+							<p class="center"><a class="btn btn-primary" href="{% url 'add_messages' %}">Leave Us a Message</a></p>
+
+						</div>
+					</div>
+				</section>
+			</main>
+        </div>
+
+
+        {% endblock%}

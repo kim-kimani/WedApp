@@ -1,0 +1,529 @@
+{% load static %}
+{% now "Y-m-d" as today_date %}
+{% now "H:i" as current_time %}
+<!DOCTYPE html>
+<!--[if lt IE 7 ]><html class="ie ie6" lang="en"> <![endif]-->
+<!--[if IE 7 ]><html class="ie ie7" lang="en"> <![endif]-->
+<!--[if IE 8 ]><html class="ie ie8" lang="en"> <![endif]-->
+<!--[if (gte IE 9)|!(IE)]><!--><html lang="en"> <!--<![endif]-->
+<head>
+	<meta charset="utf-8">
+	
+	<!-- Page Title -->
+	<title> {{ wedding.bride }} and {{ wedding.groom }} </title>
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+	<link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet">
+
+	<!-- Meta Tags for SEO -->
+	<meta name="keywords" content="one-page, single page, multi-page, wedding template, retina ready, responsive, modern html5 template, bootstrap, css3, wedding, venue">
+	<meta name="description" content="We cordially invite you to celebrate our love and commitment. Join us on 29th March at ACK St Francis Karen as we embark on a new chapter filled with joy, laughter, and everlasting happiness. Your presence will make our day truly unforgettable.">
+
+	<!-- Open Graph Meta Tags (for link preview) -->
+	<meta property="og:title" content="{{ wedding.bride }} and {{ wedding.groom }}'s Wedding">
+	<meta property="og:description" content="We cordially invite you to celebrate our love and commitment. Join us on 29th March at ACK St Francis Karen as we embark on a new chapter filled with joy, laughter, and everlasting happiness. Your presence will make our day truly unforgettable.">
+	<meta property="og:image" content="{{ media.bride_n_groom.url }}">
+	<meta property="og:url" content="{{ request.build_absolute_uri }}">
+	<meta property="og:type" content="website">
+	<meta property="og:site_name" content="{{ wedding.bride }} & {{ wedding.groom }}'s Wedding">
+
+	<!-- Twitter Card Meta Tags (for Twitter link preview) -->
+	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="{{ wedding.bride }} and {{ wedding.groom }}'s Wedding">
+	<meta name="twitter:description" content="We cordially invite you to celebrate our love and commitment. Join us on 29th March at ACK St Francis Karen as we embark on a new chapter filled with joy, laughter, and everlasting happiness.">
+	<meta name="twitter:image" content="{{ media.bride_n_groom.url }}">
+
+	
+	<!-- Mobile Meta Tag -->
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+	
+	<!-- Fav and touch icons -->
+	<link rel="icon" href="{% static 'images/fav_touch_icons/favicon.ico' %}" sizes="any">
+	<link rel="icon" href="{% static 'images/fav_touch_icons/favicon.svg' %}" type="image/svg+xml">
+	<link rel="apple-touch-icon" href="{% static 'images/fav_touch_icons/apple-touch-icon-180x180.png' %}">
+	<link rel="manifest" href="{% static 'images/fav_touch_icons/manifest.json' %}">
+	
+	<!-- IE6-8 support of HTML5 elements -->
+	<!--[if lt IE 9]>
+	  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script> 
+	<![endif]-->
+	
+	<!-- Google Web Fonts -->
+	<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+	<!-- Bootstrap CSS -->
+    <link href="{% static 'css/bootstrap.min.css' %}" rel="stylesheet" />
+
+    <!-- FontAwesome CSS -->
+    <link href="{% static 'css/fontawesome-all.min.css' %}" rel="stylesheet" />
+
+    <!-- Neela Icon Set CSS -->
+    <link href="{% static 'css/neela-icon-set.css' %}" rel="stylesheet" />
+
+    <!-- Owl Carousel CSS -->
+    <link href="{% static 'css/owl.carousel.min.css' %}" rel="stylesheet" />
+
+    <!-- Template CSS -->
+    <link href="{% static 'css/style.css' %}" rel="stylesheet" />
+
+    <!-- Modernizr JS -->
+    <script src="{% static 'js/modernizr-3.6.0.min.js' %}"></script>
+    
+</head>
+<body>
+
+	<!-- BEGIN PRELOADER -->
+	<div id="preloader">
+		<div class="loading-heart">
+			<svg viewBox="0 0 512 512" width="100">
+				<path d="M462.3 62.6C407.5 15.9 326 24.3 275.7 76.2L256 96.5l-19.7-20.3C186.1 24.3 104.5 15.9 49.7 62.6c-62.8 53.6-66.1 149.8-9.9 207.9l193.5 199.8c12.5 12.9 32.8 12.9 45.3 0l193.5-199.8c56.3-58.1 53-154.3-9.8-207.9z" />
+			</svg>
+			<div class="preloader-title">
+				<span style="font-size: 20px;">{{wedding.bride}}</span><br>
+				<small>&</small><br>
+				<span style="font-size: 20px;">{{wedding.groom}}</span>
+			</div>
+			
+		</div>
+	</div>
+	<!-- END PRELOADER -->
+
+
+	<!-- BEGIN WRAPPER -->
+	<div id="wrapper">
+	
+		<!-- BEGIN HEADER -->
+		<header id="header">
+			<div class="nav-section light">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							<a href="{% url 'home' %}" class="nav-logo"><img src="{{ media.logo.url }}" alt="Logo" /></a>
+							
+							<!-- BEGIN MAIN MENU -->
+							<nav class="navbar">
+								
+								<ul class="nav navbar-nav">
+								
+									<li><a href="{% url 'home' %}">Home</a></li>
+										
+										
+	
+									<li><a href="{% url 'index' %}">Wedding Details</a></li>
+	
+									<li><a class="active" href="{% url 'messages' %}">Messages</a></li>
+
+									<li><a class="active" href="{% url 'gallery' %}">Gallery</a></li>
+								
+									<li><a class="active" href="{% url 'submit_rsvp' %}">RSVP</a></li>
+
+									
+								</ul>
+								
+								<button id="nav-mobile-btn"><i class="fas fa-bars"></i></button><!-- Mobile menu button -->
+							</nav>
+							<!-- END MAIN MENU -->
+							
+						</div>
+					</div>
+				</div>
+			</div>
+		</header>
+		<!-- END HEADER -->
+		
+		
+		<!-- BEGIN HERO SECTION -->
+		<div id="hero" class="bg-slideshow section-divider-bottom-1 section-divider-bg-color bg-image">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<div class="v-center">
+						<div class="hero-divider-top light" data-animation-direction="from-top" data-animation-delay="700"></div>
+						
+						<h1 class="hero-title light">
+							<span data-animation-direction="from-right" data-animation-delay="300">{{wedding.bride}}</span>
+							<small data-animation-direction="from-top" data-animation-delay="300">&</small> 
+							<span data-animation-direction="from-left" data-animation-delay="300">{{wedding.groom}}</span>
+						</h1>
+						
+						<div class="hero-divider-bottom light" data-animation-direction="from-bottom" data-animation-delay="700"></div>
+
+						
+                        <div class="hero-subtitle light">
+                            {% if wedding.date|date:"Y-m-d" > today_date %}
+                            <div class="hero-subtitle light">Are Getting Married </div>
+                            <div class="hero-subtitle light" data-animation-direction="fade" data-animation-delay="1200">
+                                ON {{ wedding.date|date:"F d, Y" }} at {{ wedding.ceremony_time|time:"g:i A" }}
+                            </div>
+                            {% elif wedding.date|date:"Y-m-d" == today_date %}
+                                {% if wedding.ceremony_time|time:"H:i" > current_time %}
+                                    <div class="hero-subtitle light">Are Getting Married Today</div>
+                                {% else %}
+                                    <div class="hero-subtitle light">Got Married</div>
+                                    <div class="hero-subtitle light" data-animation-direction="fade" data-animation-delay="1200">
+                                        ON {{ wedding.date|date:"F d, Y" }} at {{ wedding.ceremony_time|time:"g:i A" }}
+                                    </div>
+                                {% endif %}
+                            {% else %}
+                            {% endif %}
+						</div>
+						
+						<!-- 
+                        Countdown container 
+						Use the data attribute "date" to set the countdown date. 
+						E.g.: data-date="2022/09/20 3:00 PM"
+                        -->
+						<div class="countdown" data-date="{{wedding.date|date:"Y-m-d"}} {{wedding.ceremony_time|time:"g:i A"}}" data-animation-direction="from-bottom" data-animation-delay="800"> </div>
+
+					</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- END HERO SECTION -->
+		
+		
+		<!-- BEGIN BRIDE & GROOM SECTION -->
+		<section class="section-bg-color overflow-content-over no-padding-top">
+		
+			<div class="section-bg-color overflow-content no-padding">
+				<div class="container">
+					<div class="row">
+						<div class="col overflow-image-wrapper">
+						
+							<div class="overflow-image-text extra-padding-top">
+								<h2 class="title">He asked her & she said yes! <br>
+									<p style="font-size: 20px;"> Ecclesiastes 4:9-12</p></h2>
+								<p class="center">Two are better than one, because they have a good return for their labor. If either of them falls down, one can help the other up. But pity anyone who falls and has no one to help them up. A cord of three strands is not quickly broken.</p>
+								<!--<p class="center"><a class="btn btn-primary" href="about-us.html">Our Love Story</a></p> -->
+							</div>
+							
+							<div class="overflow-image flower">
+								<img src="{{ media.bride_n_groom.url }}" alt="Couple Photo">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+			
+		</section>
+		<!-- END BRIDE & GROOM SECTION -->
+		
+		
+		<!-- BEGIN WEDDING INVITE SECTION -->
+		<section id="the-wedding" class="parallax-background bg-color-overlay padding-divider-top bg-image">
+			<div class="section-divider-top-1 section-divider-bg-color off-section"></div><!-- The class "section-divider-top-1" can also be applied to the tag <section>. In this case, it was added on a new <div> because the tag <section> have all pseudo elements (::after and ::before) in use. -->
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+                        {% if wedding.date|date:"Y-m-d" > today_date %}
+                        <h2 class="section-title light">We're getting married</h2>
+                            {% elif wedding.date|date:"Y-m-d" == today_date %}
+                                {% if wedding.ceremony_time|time:"H:i" > current_time %}
+                                <h2 class="section-title light">We're getting married today</h2>
+                                {% else %}
+                                <h2 class="section-title light">We got married on</h2>
+                                {% endif %}
+                            {% else %}
+                            {% endif %}
+						
+					</div>
+				</div>
+				
+				<div class="row">
+					<div class="col-md-12 col-lg-10 offset-lg-1 col-xl-8 offset-xl-2 center">
+						<div class="invite neela-style" data-animation-direction="from-left" data-animation-delay="100">
+							<div class="invite_title">
+								<div class="text">
+                                    {% if wedding.date|date:"Y-m-d" > today_date %}
+                                    Save<small>the</small>Date
+                                        {% elif wedding.date|date:"Y-m-d" == today_date %}
+                                            {% if wedding.ceremony_time|time:"H:i" > current_time %}
+                                            It's <br> Today
+                                            {% else %}
+                                            We<small>did</small>It
+                                            {% endif %}
+                                        {% else %}
+                                        {% endif %}
+									
+								</div>
+							</div>
+							
+							<div class="invite_info">
+								<h2>{{wedding.bride}} <small>&</small> {{wedding.groom}}</h2>
+								{% if wedding.date|date:"Y-m-d" > today_date %}
+                                    <div class="uppercase">Request the honor of your presence on their wedding day</div>
+                            
+                                {% elif wedding.date|date:"Y-m-d" == today_date %}
+                                    {% if wedding.ceremony_time|time:"H:i" > current_time %}
+                                        It's Today
+                                {% else %}
+                                <div class="uppercase">With heartfelt gratitude, we thank you for sharing on special day and making it even more memorable.</div>
+                                    {% endif %}
+                                {% endif %}
+								
+								<div class="date">{{wedding.date|date}}<small>at {{wedding.ceremony_time}}</small></div>
+								<div class="uppercase">{{wedding.ceremony_venue}}<br>{{wedding.ceremony_location}}</div>
+								
+								
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END WEDDING INVITE SECTION -->
+		
+		
+		<!-- BEGIN WEDDING DETAILS SECTION -->
+		<section id="wedding-details" class="bg-color">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-4 wedding-details light">
+						<br>
+						<i class="fa-solid fa-church fa-lg"></i>
+						<h4>Ceremony<small> 10:00 AM - 1:00 PM</small></h4>
+						<p>{{wedding.ceremony_venue}}<br>{{wedding.ceremony_location}}</p>
+					</div>
+					
+					<div class="col-md-4 wedding-details light">
+						<br>
+						<i class="fa-solid fa-champagne-glasses fa-lg"></i>
+						<h4>Reception<small>02:00 PM - 04:30 PM</small></h4>
+						<p>{{wedding.reception_name}}<br>{{wedding.reception_location}}</p>
+					</div>
+
+					<div class="col-md-4 wedding-details light">
+						<br>
+						<i class="fa-solid fa-clipboard-user fa-lg"></i>
+						<h4>Coming?<small> <br> PLEASE <br> CONFIRM YOUR ATTENDANCE<br>ON OR BEFORE 25th OF MARCH</small></h4>
+						
+						<a href="{% url 'submit_rsvp' %}" class="btn btn-light">RSVP</a>
+					</div>
+					
+				</div>
+			</div>
+			
+		</section>
+		<!-- END WEDDING DETAILS SECTION -->
+		
+
+		<!-- BEGIN WEDDING LOCATION SECTION -->
+		<section id="location">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h2 class="section-title">Location</h2>
+					</div>
+				</div>
+			</div>
+			
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12 col-xl-10 offset-xl-1">							
+							<div class="map-wrapper" data-animation-direction="fade" data-animation-delay="100">
+								<div class="mapouter">
+									<div class="gmap_canvas">
+										<iframe class="gmap_iframe"
+										width="100%" frameborder="0"
+										scrolling="no"
+										marginheight="0"
+										marginwidth="0"
+										src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=ack st francis karen&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed">
+									</iframe>
+									<a href="https://sprunkin.com/">Maps</a>
+								</div>
+							
+							</div>
+						</div>
+						
+					</div>
+				</div>
+			</div>
+		</section>
+		<!-- END WEDDING LOCATION SECTION -->
+		
+		<div id="location">
+    
+			
+			<div class="map_pins_full">
+				<ul class="pins">
+					
+				</ul>
+			</div>
+		</div>
+		
+		<!-- BEGIN GALLERY SECTION -->
+		<section id="gallery" class="no-padding-bottom">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12">
+						<h1 class="section-title">Wedding Gallery</h1>
+					</div>
+				</div>
+			</div>
+
+			<div class="gallery-wrapper">
+				<div class="gallery-left"><i class="fas fa-chevron-left"></i></div>
+				<div class="gallery-right"><i class="fas fa-chevron-right"></i></div>
+
+				<div class="gallery-scroller thumbs-lg">
+					<ul>
+						{% for image in gallery %}
+						<li>
+							<img src="{{ image.image.url }}" alt="Wedding Photo" />
+						</li>
+						{% endfor %}
+					</ul>
+				</div>
+				{% if gallery %}
+				<p class="center">
+					<a class="btn btn-primary" href="{% url 'gallery' %}">View More Photos</a>
+				</p>
+				{% endif %}
+
+			</div>
+		</section>
+		<!-- END GALLERY SECTION -->
+
+
+		<!-- BEGIN FOOTER -->
+		<footer id="footer-onepage" class="bg-color">
+			<div class="footer-widget-area">
+				<div class="container">
+					<div class="row">
+						<div class="col-md-4">
+							<div class="footer-info left">
+								{{wedding.groom}}:   <a href="tel:{{ wedding.groom_phone_number }}">  {{ wedding.groom_phone_number }}</a>
+								
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="footer-logo">
+								{{wedding.bride}}<br>
+								<small>&</small><br>
+								{{wedding.groom}}
+							</div>
+						</div>
+						
+						<div class="col-md-4">
+							<div class="footer-info right">
+								{{wedding.bride}}: <a href="tel:{{ wedding.bride_phone_number }}">  {{ wedding.bride_phone_number }}</a>
+							</div>
+					
+						</div>
+					</div>
+				</div>
+			</div>
+		
+			<div class="copyright">
+				<div class="container">
+					<div class="row">
+						<div class="col-sm-12">
+							&copy; <span id="current-year"></span>
+							<a href="{% url 'home' %}">{{ wedding.bride }} & {{ wedding.groom }}</a>, 
+							<span id="current-day-date-time"></span>, All Rights Reserved.
+						</div>
+					</div>
+				</div>
+			</div>
+		</footer>
+		<!-- END FOOTER -->
+		
+	</div>
+	<!-- END WRAPPER -->
+	
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+	<a href="https://chat.whatsapp.com/GXtJWyjfNzjKFyQGWQf4fx" class="float" target="_blank">
+		<i class="fa fa-whatsapp my-float"></i>
+	</a>
+	<!-- Google Maps API and Map Richmarker Library -->
+	<script src="{% static 'js/richmarker.js' %}"></script>
+
+    <!-- Libs -->
+    <script src="{% static 'js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery-migrate-3.3.2.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'js/jquery.placeholder.min.js' %}"></script>
+    <script src="{% static 'js/ismobile.js' %}"></script>
+    <script src="{% static 'js/retina.min.js' %}"></script>
+    <script src="{% static 'js/waypoints.min.js' %}"></script>
+    <script src="{% static 'js/waypoints-sticky.min.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/lightbox.min.js' %}"></script>
+
+    <!-- Nicescroll script to handle gallery section touch slide -->
+    <script src="{% static 'js/jquery.nicescroll.js' %}"></script>
+
+    <!-- Hero Background Slideshow Script -->
+    <script src="{% static 'js/jquery.zoomslider.js' %}"></script>
+	
+	<!-- Template Scripts -->
+	<script src="{% static 'js/variables.js' %}"></script>
+	<script src="{% static 'js/scripts.js' %}"></script>
+	<script>
+		function updateDateTime() {
+			const now = new Date();
+			const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+			const formattedDate = now.toLocaleDateString('en-US', options);
+	
+			document.getElementById("current-year").textContent = now.getFullYear();
+			document.getElementById("current-day-date-time").textContent = formattedDate;
+		}
+	
+		updateDateTime();
+		setInterval(updateDateTime, 1000); // Update time every second
+	</script>
+
+	<style>
+		.bg-image {
+			background-image: url('{{ media.image.url }}');
+			background-size: cover;
+			background-position: center;
+		}
+
+		.mapouter {
+			position: relative;
+			width: 100%;
+			max-width: 1200px; /* Increase max width */
+			height: 500px; /* Increase height */
+			margin: 0 auto; /* Center the map */
+			display: flex;
+			justify-content: center; /* Ensure map is centered */
+			align-items: center;
+		}
+		
+		.gmap_canvas {
+			overflow: hidden;
+			background: none !important;
+			width: 100%;
+			height: 100%;
+		}
+		
+		.gmap_iframe {
+			width: 100% !important;
+			height: 100% !important;
+		}
+		
+		.float{
+			position:fixed;
+			width:60px;
+			height:60px;
+			bottom:40px;
+			right:40px;
+			background-color:#25d366;
+			color:#FFF;
+			border-radius:50px;
+			text-align:center;
+		  	font-size:30px;
+			box-shadow: 2px 2px 3px #999;
+		  	z-index:100;
+		}
+		
+		.my-float{
+			margin-top:16px;
+		}
+	</style>
+	
+</body>
+</html>
